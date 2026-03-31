@@ -1,13 +1,13 @@
 package ovSysteem;
 
-public class ovPas {
-
-	  private double saldo;
+public class AnoniemChipkaart {
+	
+	private double saldo;
 	  /* het besgra wat er op het ov-pas staat*/
 	    private boolean ingecheckt;
 	    /* dat gefet aan of je bent ingechecktt op dit moment true/false*/ 
 	    
-	    public ovPas(String kaartnummer, double saldo) {
+	    public AnoniemChipkaart(String kaartnummer, double saldo) {
 	    /* je maakt een nieuwe object*/ 	
 	    	/* kaaratnummer dat zou het kaartnummer van de ov zijn*/ 
 	    	/* het saldo wat je op je ov-pas hebt*/ 
@@ -47,3 +47,4 @@ public class ovPas {
 	    }
 
 }
+

@@ -15,7 +15,7 @@ public class Kaartlezer {
 		/* wat voor soort kaartlezer het is */ 
 	}
 
-	public void scanKaart(ovPas pas) {
+	public void scanKaart(AnoniemChipkaart pas) {
 		System.out.println("kaart gescand op locatie:" + locatie);
 		/* het scannen van de ov-pas */
 		/* er wordt een melding geprint */ 

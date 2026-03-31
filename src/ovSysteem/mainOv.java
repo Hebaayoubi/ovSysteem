@@ -2,21 +2,31 @@ package ovSysteem;
 
 public class mainOv {
 
-    // -----------------------------
+    /** -----------------------------
     // Variabelen van Kaartlezer
     // -----------------------------
+    */
+     
     private String locatie;
     private String type;
 
-    // -----------------------------
+    /** -----------------------------
     // Variabelen van ovPas
     // -----------------------------
+    */
+    
     private double saldo;
     private boolean ingecheckt;
 
     // -----------------------------
     // Constructor
     // -----------------------------
+    /**
+     * 
+     * @param locatie
+     * @param type
+     * @param saldo
+     */
     public mainOv(String locatie, String type, double saldo) {
         this.locatie = locatie;
         this.type = type;
@@ -24,9 +34,11 @@ public class mainOv {
         this.ingecheckt = false;
     }
 
-    // -----------------------------
+    /** -----------------------------
     // Methoden van Kaartlezer
     // -----------------------------
+    */
+  
     public void scanKaart() {
         System.out.println("Kaart gescand op locatie: " + locatie);
     }
@@ -43,9 +55,12 @@ public class mainOv {
         System.out.println("Rood licht: " + melding);
     }
 
-    // -----------------------------
+    /** -----------------------------
     // Methoden van ovPas
     // -----------------------------
+    *
+     * @return
+     */
     public double getSaldo() {
         return saldo;
     }
@@ -68,9 +83,11 @@ public class mainOv {
         ingecheckt = false;
     }
 
-    // -----------------------------
+    /** -----------------------------
     // MAIN METHODE
     // -----------------------------
+     * @param args
+     */
     public static void main(String[] args) {
 
         mainOv ov = new mainOv("Arnhem", "NS", 2.00);
@@ -79,7 +96,7 @@ public class mainOv {
         ov.scanKaart();
 
         // Zolang saldo lager is dan 4 euro, blijf automatisch proberen
-        while (ov.getSaldo() < 4.00) {
+        while (ov.getSaldo() <4.00) {
             ov.foutmelding("Onvoldoende saldo! Je hebt minimaal 4 euro nodig.");
             System.out.println("Huidig saldo: " + ov.getSaldo());
 
