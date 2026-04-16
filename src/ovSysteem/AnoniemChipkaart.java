@@ -1,19 +1,23 @@
 package ovSysteem;
 
 public class AnoniemChipkaart {
-	
+	public double getSaldo() {
+	    return saldo;
+	}
+	/*actie/functie*/ 
 	private double saldo;
-	  /* het besgra wat er op het ov-pas staat*/
+	/*bewaart het geld*/ 
+	  /* het bedrag wat er op het ov-pas staat*/
 	    private boolean ingecheckt;
 	    /* dat gefet aan of je bent ingechecktt op dit moment true/false*/ 
 	    private String inchecklocatie; 
 	    /*nieuwe variabele om een locatie om-p te slaan*/ 
 	   
-	    public AnoniemChipkaart(String kaartnummer, double saldo) {
+	    public AnoniemChipkaart(double saldo){
 	    /* je maakt een nieuwe object*/ 	
 	    	/* kaaratnummer dat zou het kaartnummer van de ov zijn*/ 
 	    	/* het saldo wat je op je ov-pas hebt*/ 
-	    	
+	  
 	        this.saldo = saldo;
 	        /* het object krijgt saldo*/ 
 	        this.ingecheckt = false;

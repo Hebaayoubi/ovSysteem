@@ -2,117 +2,33 @@ package ovSysteem;
 
 public class mainOv {
 
-    /** -----------------------------
-    // Variabelen van Kaartlezer
-    // -----------------------------
-    */
-     
-    private String locatie;
-    private String type;
-
-    /** -----------------------------
-    // Variabelen van ovPas
-    // -----------------------------
-    */
-    
-    private double saldo;
-    private boolean ingecheckt;
-
-    // -----------------------------
-    // Constructor
-    // -----------------------------
-    /**
-     * 
-     * @param locatie
-     * @param type
-     * @param saldo
-     */
-    public mainOv(String locatie, String type, double saldo) {
-        this.locatie = locatie;
-        this.type = type;
-        this.saldo = saldo;
-        this.ingecheckt = false;
-    }
-
-    /** -----------------------------
-    // Methoden van Kaartlezer
-    // -----------------------------
-    */
-  
-    public void scanKaart() {
-        System.out.println("Kaart gescand op locatie: " + locatie);
-    }
-
-    public void ingechecktMelding() {
-        System.out.println("Groen licht + piep Ingecheckt.");
-    }
-
-    public void uitgechecktMelding() {
-        System.out.println("Piep Uitgecheckt.");
-    }
-
-    public void foutmelding(String melding) {
-        System.out.println("Rood licht: " + melding);
-    }
-
-    /** -----------------------------
-    // Methoden van ovPas
-    // -----------------------------
-    *
-     * @return
-     */
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public boolean isIngecheckt() {
-        return ingecheckt;
-    }
-
-    public void opwaarden(double bedrag) {
-        saldo += bedrag;
-    }
-
-    public void inchecken(double incheckBedrag) {
-        saldo -= incheckBedrag;
-        ingecheckt = true;
-    }
-
-    public void uitchecken(double ritprijs) {
-        saldo -= ritprijs;
-        ingecheckt = false;
-    }
-
-    /** -----------------------------
-    // MAIN METHODE
-    // -----------------------------
-     * @param args
-     */
     public static void main(String[] args) {
 
-        mainOv ov = new mainOv("Arnhem", "NS", 2.00);
-        // te laag saldo expres
+        // Maak objecten
+        Kaartlezer lezer = new Kaartlezer("Arnhem", "NS");
+        AnoniemChipkaart pas = new AnoniemChipkaart(2.00);
 
-        ov.scanKaart();
+        // Scan kaart
+        lezer.scanKaart(pas);
 
-        // Zolang saldo lager is dan 4 euro, blijf automatisch proberen
-        while (ov.getSaldo() <4.00) {
-            ov.foutmelding("Onvoldoende saldo! Je hebt minimaal 4 euro nodig.");
-            System.out.println("Huidig saldo: " + ov.getSaldo());
+        // Zolang saldo te laag is
+        while (pas.getSaldo() < 4.00) {
+            lezer.foutmelding("Onvoldoende saldo! Je hebt minimaal 4 euro nodig.");
+            System.out.println("Huidig saldo: " + pas.getSaldo());
 
-            // Automatisch opwaarderen
-            ov.opwaarden(2.00);
+            pas.opwaarden(2.00);
             System.out.println("Automatisch 2 euro opgewaardeerd...");
         }
 
-        // Genoeg saldo → inchecken
-        ov.inchecken(4.00);
-        ov.ingechecktMelding();
+        // Inchecken
+        pas.inchecken(4.00, "Arnhem");
+        lezer.ingecheckt();
 
         // Uitchecken
-        ov.uitchecken(2.50);
-        ov.uitgechecktMelding();
+        pas.uitchecken(2.50);
+        lezer.uitgecheckt();
 
-        System.out.println("Nieuw saldo: " + ov.getSaldo());
+        // Eindsaldo
+        System.out.println("Nieuw saldo: " + pas.getSaldo());
     }
 }
